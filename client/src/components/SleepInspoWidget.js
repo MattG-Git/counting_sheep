@@ -22,11 +22,13 @@ function SleepInspoWidget() {
   } 
   return (
     // ADD STYLING TO THIS WIDGET
-    <div className="container">
+    <div className="container mt-4 mb-4 p-3">
       <div className="row">
         <div className="col">
-          <h3>Sleep Inspiration</h3>
-           {randomInspo()}
+        <h3>Sleep Inspiration</h3>
+          <div className="card">
+            {randomInspo()}
+           </div>
         </div>
       </div>
     </div>

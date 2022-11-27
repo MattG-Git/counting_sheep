@@ -159,7 +159,7 @@ function TrackForm() {
                                     Missed the whole herd 🐑
                                 </label>
                             </div>
-                            <button className="btn btn-primary" type="submit">Track Sleep</button>
+                            <button className="btn btn-primary" type="submit">Track Sleep Quality</button>
                     </form>
                 </div>
             </div>

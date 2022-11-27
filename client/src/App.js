@@ -10,9 +10,9 @@ function App() {
     <div className="App">
       <Nav />
       <Dashboard />
-      <Footer />
       <TrackForm />
       <LoginForm />
+      <Footer />
     </div>
   );
 }

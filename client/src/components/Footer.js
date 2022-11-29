@@ -8,7 +8,7 @@ export default function Footer() {
           <p>Counting Sheep</p>
         </div>
         <div className="col">
-          <img src="./assets/cs_logo.svg" id="logo" alt="Logo"></img>
+          <img src="./assets/cs_logo_2.svg" id="logo" alt="Logo"></img>
         </div>
         <div className="col">
         <p>ⓒ 2022</p>

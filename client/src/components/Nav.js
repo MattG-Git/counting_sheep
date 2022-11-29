@@ -6,7 +6,7 @@ function Nav() {
     <nav className="navbar bg-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          <img src="./assets/cs_logo.svg" id="logo" alt="Logo"></img>
+          <img src="./assets/cs_logo_2.svg" id="logo" alt="Logo"></img>
           Counting Sheep
         </a>
         <ul className="nav">

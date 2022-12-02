@@ -1,8 +1,8 @@
 import AvgWidget from "./AvgWidget";
 import HistoryWidget from "./HistoryWidget";
 import SleepInspoWidget from "./SleepInspoWidget";
-
 import React, { useState } from "react";
+import '../styles/style.css';
 
 function Dashboard() {
     const [sleepAverage, setSleepAverage] = useState(0);

@@ -2,12 +2,12 @@ import React from 'react';
 
 function TrackForm() {
     return(
-        <div className="container">
+        <div className="container m-5">
             <div className="row">
                 <div className="col">
                     <form>
                         <label for="date" className="form-label">Date</label>
-                        <div className="input-group">
+                        <div className="input-group p-1 mb-4">
                             <select className="form-select">
                                 <option selected>Month</option>
                                 <option value="1">January</option>
@@ -66,7 +66,7 @@ function TrackForm() {
                             </select>
                         </div>
                         <label for="time" className="form-label">Sleep Start Time</label>
-                        <div className="input-group">
+                        <div className="input-group p-1 mb-4">
                             <select className="form-select">
                                 <option selected>Hour</option>
                                 <option value="1">1</option>
@@ -89,21 +89,21 @@ function TrackForm() {
                                 <option value="30">30</option>
                                 <option value="45">45</option>
                             </select>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="am" id="amRadioStart"></input>
+                            <div className="form-check m-3">
+                                <input className="form-check-input" type="radio" name="ampm1" id="amRadioStart"></input>
                                 <label className="form-check-label" for="am">
                                     AM
                                 </label>
                             </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="pm" id="pmRadioStart"></input>
+                            <div className="form-check m-3">
+                                <input className="form-check-input" type="radio" name="ampm1" id="pmRadioStart"></input>
                                 <label className="form-check-label" for="pm">
                                     PM
                                 </label>
                             </div>
                         </div>
                         <label for="time" className="form-label">Sleep End Time</label>
-                            <div className="input-group">
+                            <div className="input-group mb-4 p-1">
                                 <select className="form-select">
                                     <option selected>Hour</option>
                                     <option value="1">1</option>
@@ -126,21 +126,21 @@ function TrackForm() {
                                     <option value="30">30</option>
                                     <option value="45">45</option>
                                 </select>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="am" id="amRadioEnd"></input>
+                                <div className="form-check m-3">
+                                    <input className="form-check-input" type="radio" name="ampm2" id="amRadioEnd"></input>
                                     <label className="form-check-label" for="am">
                                         AM
                                     </label>
                                 </div>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="pm" id="pmRadioEnd"></input>
+                                <div className="form-check m-3">
+                                    <input className="form-check-input" type="radio" name="ampm2" id="pmRadioEnd"></input>
                                     <label className="form-check-label" for="pm">
                                         PM
                                     </label>
                                 </div>
                             </div>
                         <label for="quality" className="form-label">Quality of Sleep</label>
-                        <div className="input-group"></div>
+                        <div className="input-group p-1"></div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="sleep" id="goodSleep"></input>
                                 <label className="form-check-label" for="flexRadioDefault1">
@@ -159,7 +159,7 @@ function TrackForm() {
                                     Missed the whole herd 🐑
                                 </label>
                             </div>
-                            <button className="btn btn-primary" type="submit">Track Sleep Quality</button>
+                            <button className="btn btn-primary m-5" type="submit">Track Sleep Quality</button>
                     </form>
                 </div>
             </div>

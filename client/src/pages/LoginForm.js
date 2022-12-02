@@ -2,7 +2,7 @@ import React from 'react';
 
 function LoginForm() {
     return(
-        <div className="container">
+        <div className="container m-5">
             <div className="row">
                 <div className="col-6 login">
                     <h3>Log In</h3>

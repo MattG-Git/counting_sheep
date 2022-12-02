@@ -11,7 +11,9 @@ function Dashboard() {
         {/* WOULD BE NICE TO PERSONALIZE THE HEADER WITH LOGIN NAME INSTEAD OF JUST "YOUR" */}
         <h1>Your Counting Sheep Dashboard</h1>
         <AvgWidget sleepAverage={sleepAverage} setSleepAverage={setSleepAverage}/>
-        <button className="btn btn-primary">Track Sleep</button>
+        <div className="d-grid gap-2 m-4">
+          <button className="btn btn-primary btn-lg m-4" type="button" onClick={()=> window.location.href="/track"}>Track Sleep</button>
+        </div>
         <HistoryWidget />
         <SleepInspoWidget />
     </div>

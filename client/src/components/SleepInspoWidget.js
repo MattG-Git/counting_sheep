@@ -31,7 +31,6 @@ function SleepInspoWidget() {
     }
   } 
   return (
-    // ADD STYLING TO THIS WIDGET
     <div className="container mt-4 mb-4 p-3">
       <div className="row">
         <div className="col">

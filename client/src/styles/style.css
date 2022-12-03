@@ -1,0 +1,44 @@
+.navbar {
+    background-image: #202535;
+}
+
+a {
+    font-weight: bold;
+    color:  #AF9620;
+}
+
+h1 {
+   color:  rgb(245, 230, 154);
+} 
+
+h3 {
+    color:  rgb(247, 207, 8);
+ } 
+
+ p {
+    color: rgba(202, 171, 14, 0.981);
+ }
+
+ h2, h5, .form-label {
+    color:#D4AF37;
+ }
+ 
+.navbar-brand {
+    color: rgb(247, 207, 8)!important;
+    
+}
+
+.btn.custom {
+    width: 300px;
+    margin: auto;
+    display: block;
+}
+
+.custom2 {
+    color:  rgb(243, 217, 90);
+}
+
+label {
+    font-weight: bold;
+    color:  rgb(243, 217, 90);
+}

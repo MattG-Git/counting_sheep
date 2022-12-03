@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Counting Sheep 🐑
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Description
+This is a full stack React application that a user may create an account, login, track sleep history, receive randomized sleep inspiration. 
 
-## Available Scripts
+# Acceptance Criteria
+We wrote the  code to meet the following acceptance criteria:
 
-In the project directory, you can run:
+* Use React for the front end.
+* Use GraphQL with a Node.js and Express.js server.
+* Use MongoDB and the Mongoose ODM for the database.
+* Use queries and mutations for retrieving, adding, updating, and deleting data.
+* Be deployed using Heroku (with data).
+* Have a polished UI.
+* Be responsive.
+* Be interactive (i.e., accept and respond to user input).
+* Include authentication (JWT).
+* Protect sensitive API key information on the server.
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, and so on).
+* Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
-### `npm start`
+# Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* npm install to install required npm packages
+* npm start to initialize application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Usage
+To use this application, first create an account or log in. Then begin tracking your sleep time and quality using the sleep tracker form. You can view your history and sleep inspiration on your customized dashboard.
 
-### `npm test`
+# Capabilities
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Create an account or login
+* Track your sleep date, start & end times as well as your quality of sleep.
+* View your sleep history on the dashboard
+* Receive randomized sleep advice and inspiration
 
-### `npm run build`
+# Deployed Heroku application: 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please see [live page here]()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Contributors
+* [Tyler Morse](https://github.com/tmorse2222)
+* [Jayita Chowdhury](https://github.com/jayita87)
+* [Jean Bissai](https://github.com/JeanBissai)
+* [Matt Goldhammer](https://github.com/MattG-Git)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Screenshot
+![Login Screen ](./client/public/assets/login_screenshot.png)
+![Dashboard ](./client/public/assets/user_dashboard_screenshot.png)
+![Sleep Tracker Form ](./client/public/assets/sleep_tracker_form_screenshot.png)

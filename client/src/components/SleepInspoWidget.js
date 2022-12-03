@@ -2,7 +2,7 @@ import React from "react";
 
 function SleepInspoWidget() {
   const randomInspo = () => {
-    const randomNum = Math.floor(Math.random() * 6);
+    const randomNum = Math.floor(Math.random() * 11);
    switch(randomNum) {
       case 0: 
         return <h5>Be Consistent. Try to go to bed around the same time each night to help your body fall into a rhythm.</h5>

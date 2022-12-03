@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <div className="container">
+    <div className="container position-absolute top-100 start-50 translate-middle">
       <div className="row">
         <div className="col">
           <p>Counting Sheep</p>

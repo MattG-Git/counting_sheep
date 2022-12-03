@@ -8,28 +8,28 @@ function LoginForm() {
                     <h3>Log In</h3>
                     <form>
                     <div className="mb-3">
-                        <label for="InputUserName" className="form-label">Username</label>
+                        <label for="InputUserName" className="form-label custom2">Username</label>
                         <input type="text" className="form-control" id="usernameLogin"></input>
                     </div>
                     <div className="mb-3">
-                        <label for="InputPassword" className="form-label">Password</label>
+                        <label for="InputPassword" className="form-label custom2">Password</label>
                         <input type="password" className="form-control" id="PasswordLogin"></input>
                     </div>
-                    <button type="submit" className="btn btn-primary">Log In</button>
+                    <button type="submit" className="btn btn-warning">Log In</button>
                     </form>
                 </div>
                 <div className="col-6 signup">
                     <h3> Sign Up</h3>
                     <form>
                         <div className="mb-3">
-                            <label for="InputUserName" className="form-label">Username</label>
+                            <label for="InputUserName" className="form-label custom2">Username</label>
                             <input type="text" className="form-control" id="usernameSignup"></input>
                         </div>
                         <div className="mb-3">
-                            <label for="InputPassword" className="form-label">Password</label>
+                            <label for="InputPassword" className="form-label custom2">Password</label>
                             <input type="password" className="form-control" id="PasswordSignup"></input>
                         </div>
-                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                        <button type="submit" className="btn btn-warning">Sign Up</button>
                         </form>
                 </div>
             </div>

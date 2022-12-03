@@ -12,7 +12,7 @@ function Dashboard() {
         <h1>Your Counting Sheep Dashboard</h1>
         <AvgWidget sleepAverage={sleepAverage} setSleepAverage={setSleepAverage}/>
         <div className="d-grid gap-2 m-4">
-          <button className="btn btn-primary btn-lg m-4" type="button" onClick={()=> window.location.href="/track"}>Track Sleep</button>
+          <button className="btn btn-warning btn-lg custom" type="button" onClick={()=> window.location.href="/track"}>Track Sleep</button>
         </div>
         <HistoryWidget />
         <SleepInspoWidget />

@@ -1,18 +1,44 @@
-/* navbar */
 .navbar {
-    background-image: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% );
+    background-image: #202535;
 }
-/* for fonts */
+
 a {
+    font-weight: bold;
     color:  #AF9620;
 }
-/* login form */
-.container{
-    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
-}
+
 h1 {
-   color:  #AF9620;
+   color:  rgb(245, 230, 154);
 } 
-button {
-    color: #AF9620;
+
+h3 {
+    color:  rgb(247, 207, 8);
+ } 
+
+ p {
+    color: rgba(202, 171, 14, 0.981);
+ }
+
+ h2, h5, .form-label {
+    color:#D4AF37;
+ }
+ 
+.navbar-brand {
+    color: rgb(247, 207, 8)!important;
+    
+}
+
+.btn.custom {
+    width: 300px;
+    margin: auto;
+    display: block;
+}
+
+.custom2 {
+    color:  rgb(243, 217, 90);
+}
+
+label {
+    font-weight: bold;
+    color:  rgb(243, 217, 90);
 }

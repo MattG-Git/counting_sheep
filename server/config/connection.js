@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/counting-sheep', {
-    useNewUrlParse: true,
-    useFindAndModify: false,
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/counting-sheep', {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
 });
 
 module.exports = mongoose.connection;

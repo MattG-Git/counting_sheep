@@ -1,13 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {ADD_SLEEP} from '../utils/mutations';
+import {useMutation} from '@apollo/client';
 
 function TrackForm() {
+    const navigate = useNavigate();
+    const [formState, setFormState] = useState({date: '', hours: '', quality: ''});
+    const [addSleep, {error}] = useMutation(ADD_SLEEP);
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log(formState);
+        try {
+            const {data} = await addSleep({
+                variables: {...formState},
+            });
+        } catch (e) {
+            console.error(e);
+        }
+        setFormState({
+            date: '',
+            hours: '',
+            quality: '',
+        });
+        navigate('/');
+    };
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+
     return(
         <div className="container m-5">
             <div className="row">
                 <div className="col">
-                    <form>
-                        <label for="date" className="form-label">Date</label>
-                        <div className="input-group p-1 mb-4">
+                    <form onSubmit={handleFormSubmit}>
+                        <label htmlfor="date" className="form-label">Date</label>
+                        <div name="date" className="input-group p-1 mb-4" onChange={handleChange}>
                             <select className="form-select">
                                 <option selected>Month</option>
                                 <option value="1">January</option>
@@ -65,8 +98,8 @@ function TrackForm() {
                                 <option value="2023">2023</option>
                             </select>
                         </div>
-                        <label for="time" className="form-label">Sleep Start Time</label>
-                        <div className="input-group p-1 mb-4">
+                        <label htmlfor="startTime" className="form-label">Sleep Start Time</label>
+                        <div className="input-group p-1 mb-4" name="startTime" onChange={handleChange}>
                             <select className="form-select">
                                 <option selected>Hour</option>
                                 <option value="1">1</option>
@@ -102,8 +135,8 @@ function TrackForm() {
                                 </label>
                             </div>
                         </div>
-                        <label for="time" className="form-label">Sleep End Time</label>
-                            <div className="input-group mb-4 p-1">
+                        <label for="endTime" className="form-label">Sleep End Time</label>
+                            <div className="input-group mb-4 p-1" name="endTime" onChange={handleChange}>
                                 <select className="form-select">
                                     <option selected>Hour</option>
                                     <option value="1">1</option>
@@ -141,7 +174,7 @@ function TrackForm() {
                             </div>
                         <label for="quality" className="form-label">Quality of Sleep</label>
                         <div className="input-group p-1"></div>
-                            <div className="form-check">
+                            <div className="form-check" name="quality" onChange={handleChange}>
                                 <input className="form-check-input" type="radio" name="sleep" id="goodSleep"></input>
                                 <label className="form-check-label" for="flexRadioDefault1">
                                     Counted all the sheep 🐑 🐑 🐑
@@ -159,12 +192,13 @@ function TrackForm() {
                                     Missed the whole herd 🐑
                                 </label>
                             </div>
-                            <button className="btn btn-warning m-5" type="submit">Track Sleep Quality</button>
+                            <button className="btn btn-warning m-5" type="submit">Track Sleep</button>
                     </form>
                 </div>
             </div>
         </div>
     )
+
 };
 
 export default TrackForm;

@@ -23,7 +23,7 @@ const resolvers = {
         },
         sleepData: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Sleep.find(params).sort({ createdAt: -1 });
+            return Sleep.find(params).sort({ date: -1 });
         },
     },
     Mutation: {

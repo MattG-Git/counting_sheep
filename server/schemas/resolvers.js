@@ -29,16 +29,9 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addSleep: async (parent, { date, hours, quality }, context) => {
-            if (context.user) {
-                const sleep = await Sleep.create({
-                    date,
-                    hours,
-                    quality,
-                    user: context.user._id,
-                });
-                return sleep;
-            }
+        addSleep: async (parent, { date, hours, quality, user }) => {
+            const sleep = await Sleep.create({ date, hours, quality, user });
+            return sleep;
         }
     },
 };

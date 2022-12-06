@@ -14,7 +14,6 @@ const typeDefs = gql`
         user: ID
     }
     type Query {
-        login(username: String!, password: String!): Auth
         sleepData: [Sleep]
     }
     type Auth {
@@ -24,6 +23,7 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, password: String!): Auth
         addSleep(date: String!, hours: Int!, quality: String!): Sleep
+        login(username: String!, password: String!): Auth
     }
 `;
 

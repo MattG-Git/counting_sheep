@@ -65,6 +65,7 @@ function TrackForm() {
             const {data} = await addSleep({
                 variables: {date, hours, quality}
             });
+            console.log(data);
             navigate('/');
         } catch (err) {
             console.error(err);

@@ -4,44 +4,81 @@ import {ADD_SLEEP} from '../utils/mutations';
 import {useMutation} from '@apollo/client';
 
 function TrackForm() {
-    const navigate = useNavigate();
-    const [formState, setFormState] = useState({date: '', hours: '', quality: ''});
     const [addSleep, {error}] = useMutation(ADD_SLEEP);
+    const navigate = useNavigate();
+    const [dateState, setDateState] = useState({month: '', day: '', year: ''});
+    const [timeState, setTimeState] = useState({startHour: '', startMinute: '', startAmPm: '', endHour: '', endMinute: '', endAmPm: ''});
+    const [qualityState, setQualityState] = useState({quality: ''});
+
+    const handleDateChange = (event) => {
+        const {name, value} = event.target;
+        setDateState({
+            ...dateState,
+            [name]: value
+        });
+    };
+
+    const handleTimeChange = (event) => {
+        const {name, value} = event.target;
+        setTimeState({
+            ...timeState,
+            [name]: value
+        });
+    };
+    
+    const handleQualityChange = (event) => {
+        const {name, value} = event.target;
+        setQualityState({
+            ...qualityState,
+            [name]: value
+        });
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+        const date = `${dateState.month}/${dateState.day}/${dateState.year}`;
+        const startHour = parseInt(timeState.startHour);
+        const startMinute = parseInt(timeState.startMinute);
+        const endHour = parseInt(timeState.endHour);
+        const endMinute = parseInt(timeState.endMinute);
+        const startAmPm = timeState.startAmPm;
+        const endAmPm = timeState.endAmPm;
+        const quality = qualityState.quality;
+        let hours = 0;
+        // determine hours of sleep
+        if (startAmPm === 'PM' && endAmPm === 'AM') {
+            hours = (endHour + 12) - (startHour);
+        } else if (startAmPm === 'PM' && endAmPm === 'PM') {
+            hours = (endHour) - (startHour);
+        } else if (startAmPm === 'AM' && endAmPm === 'AM') {
+            hours = endHour - startHour;
+        } else if (startAmPm === 'AM' && endAmPm === 'PM') {
+            hours = (endHour + 12) - startHour;
+        }
+        // determine minutes of sleep
+        console.log(hours)
+        if (startMinute > endMinute) {
+            hours -= 1;
+        }
+        console.log(date, hours, quality);
         try {
             const {data} = await addSleep({
-                variables: {...formState},
+                variables: {date, hours, quality}
             });
-        } catch (e) {
-            console.error(e);
+            navigate('/');
+        } catch (err) {
+            console.error(err);
         }
-        setFormState({
-            date: '',
-            hours: '',
-            quality: '',
-        });
-        navigate('/');
     };
-
-    const handleChange = (event) => {
-        const {name, value} = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
+        
     return(
         <div className="container m-5">
             <div className="row">
                 <div className="col">
                     <form onSubmit={handleFormSubmit}>
                         <label htmlfor="date" className="form-label">Date</label>
-                        <div name="date" className="input-group p-1 mb-4" onChange={handleChange}>
-                            <select className="form-select">
+                        <div className="input-group p-1 mb-4">
+                            <select className="form-select" name="month" onChange={handleDateChange}>
                                 <option selected>Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
@@ -56,7 +93,7 @@ function TrackForm() {
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <select className="form-select">
+                            <select className="form-select" name='day' onChange={handleDateChange}>
                                 <option selected>Day</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -90,7 +127,7 @@ function TrackForm() {
                                 <option value="30">30</option>
                                 <option value="31">31</option>
                             </select>
-                            <select className="form-select">
+                            <select className="form-select" name='year' onChange={handleDateChange}>
                                 <option selected>Year</option>
                                 <option value="2020">2020</option>
                                 <option value="2021">2021</option>
@@ -98,9 +135,9 @@ function TrackForm() {
                                 <option value="2023">2023</option>
                             </select>
                         </div>
-                        <label htmlfor="startTime" className="form-label">Sleep Start Time</label>
-                        <div className="input-group p-1 mb-4" name="startTime" onChange={handleChange}>
-                            <select className="form-select">
+                        <label htmlFor="startTime" className="form-label">Sleep Start Time</label>
+                        <div className="input-group p-1 mb-4">
+                            <select className="form-select" name='startHour' onChange={handleTimeChange}>
                                 <option selected>Hour</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -115,29 +152,22 @@ function TrackForm() {
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>
-                            <select className="form-select">
+                            <select className="form-select" name='startMinute' onChange={handleTimeChange}>
                                 <option selected>Minute</option>
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                                 <option value="45">45</option>
                             </select>
-                            <div className="form-check m-3">
-                                <input className="form-check-input" type="radio" name="ampm1" id="amRadioStart"></input>
-                                <label className="form-check-label" for="am">
-                                    AM
-                                </label>
-                            </div>
-                            <div className="form-check m-3">
-                                <input className="form-check-input" type="radio" name="ampm1" id="pmRadioStart"></input>
-                                <label className="form-check-label" for="pm">
-                                    PM
-                                </label>
-                            </div>
+                            <select className="form-select" name='startAmPm' onChange={handleTimeChange}>
+                                <option selected>AM/PM</option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
                         </div>
                         <label for="endTime" className="form-label">Sleep End Time</label>
-                            <div className="input-group mb-4 p-1" name="endTime" onChange={handleChange}>
-                                <select className="form-select">
+                            <div className="input-group mb-4 p-1">
+                                <select className="form-select" name='endHour' onChange={handleTimeChange}>
                                     <option selected>Hour</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -152,46 +182,27 @@ function TrackForm() {
                                     <option value="11">11</option>
                                     <option value="12">12</option>
                                 </select>
-                                <select className="form-select">
+                                <select className="form-select" name='endMinute' onChange={handleTimeChange}>
                                     <option selected>Minute</option>
                                     <option value="00">00</option>
                                     <option value="15">15</option>
                                     <option value="30">30</option>
                                     <option value="45">45</option>
                                 </select>
-                                <div className="form-check m-3">
-                                    <input className="form-check-input" type="radio" name="ampm2" id="amRadioEnd"></input>
-                                    <label className="form-check-label" for="am">
-                                        AM
-                                    </label>
-                                </div>
-                                <div className="form-check m-3">
-                                    <input className="form-check-input" type="radio" name="ampm2" id="pmRadioEnd"></input>
-                                    <label className="form-check-label" for="pm">
-                                        PM
-                                    </label>
-                                </div>
+                                <select className="form-select" name='endAmPm' onChange={handleTimeChange}>
+                                    <option selected>AM/PM</option>
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
                             </div>
                         <label for="quality" className="form-label">Quality of Sleep</label>
                         <div className="input-group p-1"></div>
-                            <div className="form-check" name="quality" onChange={handleChange}>
-                                <input className="form-check-input" type="radio" name="sleep" id="goodSleep"></input>
-                                <label className="form-check-label" for="flexRadioDefault1">
-                                    Counted all the sheep 🐑 🐑 🐑
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="sleep" id="okSleep"></input>
-                                <label className="form-check-label" for="flexRadioDefault2">
-                                    Only able to count a few 🐑 🐑
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="sleep" id="badSleep"></input>
-                                <label className="form-check-label" for="flexRadioDefault3">
-                                    Missed the whole herd 🐑
-                                </label>
-                            </div>
+                            <select className="form-select" name='quality' onChange={handleQualityChange}>
+                                <option selected>Quality</option>
+                                <option value="Missed the whole herd 🐑">Missed the whole herd 🐑</option>
+                                <option value="Only able to count a few 🐑 🐑">Only able to count a few 🐑 🐑</option>
+                                <option value="Counted all the sheep 🐑 🐑 🐑">Counted all the sheep 🐑 🐑 🐑</option>
+                            </select>
                             <button className="btn btn-warning m-5" type="submit">Track Sleep</button>
                     </form>
                 </div>

@@ -5,8 +5,8 @@ mutation createUser($username: String!, $password: String!) {
     addUser(username: $username, password: $password) {
       token
       user {
-        username
         _id
+        username
       }
     }
   }
@@ -25,7 +25,7 @@ mutation login($username: String!, $password: String!) {
 `;
 
 export const ADD_SLEEP = gql`
-mutation Mutation($date: String!, $hours: Int!, $quality: String!) {
+mutation addSleep($date: String!, $hours: Int!, $quality: String!) {
   addSleep(date: $date, hours: $hours, quality: $quality) {
     date
     hours

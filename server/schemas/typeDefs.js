@@ -22,8 +22,8 @@ const typeDefs = gql`
     }
     type Mutation {
         addUser(username: String!, password: String!): Auth
+        addSleep(date: String!, hours: Int!, quality: String!): Sleep
         login(username: String!, password: String!): Auth
-        addSleep(date: String!, hours: Int!, quality: String!, user: ID!):
     }
 `;
 

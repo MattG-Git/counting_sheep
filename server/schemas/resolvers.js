@@ -18,7 +18,7 @@ const resolvers = {
             return { token, user };
         },
         login: async (parent, { username, password }) => {
-            const user = await User.findOne({ username });
+            const user = await User.findOne({ username});
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials');
             }
@@ -29,9 +29,16 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addSleep: async (parent, { date, hours, quality, user }) => {
-            const sleep = await Sleep.create({ date, hours, quality, user });
-            return sleep;
+        addSleep: async (parent, { date, hours, quality }, context) => {
+            if (context.user) {
+                const sleep = await Sleep.create({
+                    date,
+                    hours,
+                    quality,
+                    user: context.user._id,
+                });
+                return sleep;
+            }
         }
     },
 };

@@ -30,6 +30,7 @@ mutation addSleep($date: String!, $hours: Int!, $quality: String!) {
     date
     hours
     quality
+    user
   }
 }
 `;

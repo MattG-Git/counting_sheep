@@ -25,12 +25,11 @@ mutation login($username: String!, $password: String!) {
 `;
 
 export const ADD_SLEEP = gql`
-    mutation addSleep($date: String!, $hours: Int!, $quality: Int!) {
-        addSleep(date: $date, hours: $hours, quality: $quality) {
-            _id
-            date
-            hours
-            quality
-        }
-    }
+mutation Mutation($date: String!, $hours: Int!, $quality: String!) {
+  addSleep(date: $date, hours: $hours, quality: $quality) {
+    date
+    hours
+    quality
+  }
+}
 `;

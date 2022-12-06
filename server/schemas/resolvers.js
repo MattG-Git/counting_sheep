@@ -38,7 +38,6 @@ const resolvers = {
                 });
                 return sleep;
             }
-            throw new AuthenticationError('You need to be logged in!');
         }
     },
 };

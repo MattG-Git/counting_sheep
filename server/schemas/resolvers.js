@@ -1,92 +1,45 @@
 const { User, Sleep } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
+        sleepData: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__v -password')
-                    .populate('sleep');
-
-                return userData;
+                const sleepData = await Sleep.find({ user: context.user._id });
+                return sleepData;
             }
-
-            throw new AuthenticationError('Not logged in');
-        },
-        users: async () => {
-            return User.find()
-                .select('-__v -password')
-                .populate('sleep');
-        },
-        sleep: async (parent, { _id }) => {
-            return Sleep.findOne({ _id });
-        },
-        sleepData: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Sleep.find(params).sort({ createdAt: -1 });
-        },
+        }
     },
     Mutation: {
-        addUser: async (parent, args) => {
-            const user = await User.create(args);
+        addUser: async (parent, { username, password }) => {
+            const user = await User.create({ username, password });
             const token = signToken(user);
-
             return { token, user };
         },
         login: async (parent, { username, password }) => {
             const user = await User.findOne({ username });
-
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials');
             }
-
             const correctPw = await user.isCorrectPassword(password);
-
             if (!correctPw) {
                 throw new AuthenticationError('Incorrect credentials');
             }
-
             const token = signToken(user);
             return { token, user };
         },
-        addSleep: async (parent, args, context) => {
+        addSleep: async (parent, { date, hours, quality }, context) => {
             if (context.user) {
-                const sleep = await Sleep.create({ ...args, user: context.user._id });
-                if (!sleep) {
-                    throw new AuthenticationError('You need to be logged in!');
-                }
-
+                const sleep = await Sleep.create({
+                    date,
+                    hours,
+                    quality,
+                    user: context.user._id,
+                });
                 return sleep;
             }
-        },
-        updateSleep: async (parent, { _id, ...args }, context) => {
-            if (context.user) {
-                const sleep = await Sleep.findByIdAndUpdate
-                    (
-                        { _id },
-                        { ...args },
-                        { new: true, runValidators: true }
-                    );
-                if (!sleep) {
-                    throw new AuthenticationError('You need to be logged in!');
-                }
-
-                return sleep;
-            }
-        },
-        removeSleep: async (parent, { _id }, context) => {
-            if (context.user) {
-                const sleep = await Sleep.findByIdAndDelete
-                    (
-                        { _id }
-                    );
-                if (!sleep) {
-                    throw new AuthenticationError('You need to be logged in!');
-                }
-
-                return sleep;
-            }
-        },
+            throw new AuthenticationError('You need to be logged in!');
+        }
     },
 };
 

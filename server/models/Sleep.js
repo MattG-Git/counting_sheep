@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const sleepSchema = new Schema({
     date: {
-        type: Date,
+        type: String,
         required: true,
         trim: true,
     },
@@ -12,7 +12,7 @@ const sleepSchema = new Schema({
         trim: true,
     },
     quality: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
     },

@@ -70,7 +70,7 @@ function TrackForm() {
                 user: (Auth.getProfile().data._id).split(' ').pop().trim()}
             });
             console.log(data);
-            navigate('/dashboard');
+            navigate('/');
         }
         catch (err) {
             console.error(err);

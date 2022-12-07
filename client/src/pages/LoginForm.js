@@ -19,7 +19,7 @@ function LoginForm() {
             const { data } = await login({
                 variables: { ...formState },
             });
-            Auth.login(data.token);
+            Auth.login(data.login.token);
         } catch (e) {
             console.error(e);
         }
@@ -37,7 +37,8 @@ function LoginForm() {
             const { data } = await createUser({
                 variables: { ...formState },
             });
-            Auth.login(data.token);
+            Auth.login(data.addUser.token);
+            console.log(data);
         } catch (e) {
             console.error(e);
         }

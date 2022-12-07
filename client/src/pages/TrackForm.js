@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {ADD_SLEEP} from '../utils/mutations';
 import {useMutation} from '@apollo/client';
+import Auth from '../utils/auth';
 
 function TrackForm() {
     const [addSleep, {error}] = useMutation(ADD_SLEEP);
@@ -60,13 +61,18 @@ function TrackForm() {
         if (startMinute > endMinute) {
             hours -= 1;
         }
-        console.log(date, hours, quality);
+
+        
+        console.log(date, hours, quality)
         try {
             const {data} = await addSleep({
-                variables: {date, hours, quality}
+                variables: {date, hours, quality,
+                user: (Auth.getProfile().data._id).split(' ').pop().trim()}
             });
+            console.log(data);
             navigate('/');
-        } catch (err) {
+        }
+        catch (err) {
             console.error(err);
         }
     };

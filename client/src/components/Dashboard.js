@@ -34,10 +34,20 @@ function Dashboard() {
               <button className="btn btn-warning btn-lg custom" type="button" onClick={()=> window.location.href="/track"}>Track Sleep</button>
             </div>
             {/* Pass sleep data to history widget */}
-            <HistoryWidget sleepData={sleepData}/>
+            <HistoryWidget/>
             <SleepInspoWidget />
         </div>
     );
 }
 
 export default Dashboard;
+
+{/* <div className="col">
+<div className="card">
+  <div className="card-body">
+    <h5 className="card-title">XX/XX/XXXX</h5>
+    <p className="card-text">Time Slept: X hours XX minutes</p>
+    <p className="card-text">Quality of Sleep: Counted all the sheep 🐑 🐑 🐑</p>
+  </div>
+</div>
+</div> */}
